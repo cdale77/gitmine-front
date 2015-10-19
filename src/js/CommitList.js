@@ -1,3 +1,5 @@
+var CommitListing = require("./CommitListing");
+
 var CommitList  = React.createClass({
   getInitialState: function() {
     return {data: []};
@@ -52,3 +54,4 @@ var CommitList  = React.createClass({
   }
 });
 
+module.exports = CommitList

@@ -11,3 +11,5 @@ var CommitListing = React.createClass({
     );
   }
 });
+
+module.exports = CommitListing
