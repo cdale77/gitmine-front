@@ -26,13 +26,11 @@ class CommitList extends React.Component {
   }
 
   render() {
-    console.log("building listings");
     var commitListings = [];
     var commitData = this.state.data;
     for(var key in commitData) {
       if (commitData.hasOwnProperty(key)) {
         var commit = commitData[key];
-        console.log("looping", commit);
         commitListings.push(
           <CommitListing
             data = {commit.Data}
@@ -45,9 +43,6 @@ class CommitList extends React.Component {
       };
 
     };
-
-    console.log("commit listings are:");
-    console.log(commitListings);
 
     return (
       <div className="commit-list">
