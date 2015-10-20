@@ -47,7 +47,7 @@ gulp.task('watch', function() {
 gulp.task('build', function(){
   browserify({
     entries: [path.ENTRY_POINT],
-    transform: [reactify],
+    //transform: [reactify],
     })
     .transform(babelify)
     .bundle()

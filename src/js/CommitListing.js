@@ -1,7 +1,7 @@
-var React = require("react");
+import React from "react";
 
-var CommitListing = React.createClass({
-  render: function() {
+class CommitListing extends React.Component {
+  render() {
     return (
       <div className="commit-listing">
         <h3>Commit</h3>
@@ -12,6 +12,6 @@ var CommitListing = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = CommitListing
+export default CommitListing

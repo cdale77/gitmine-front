@@ -1,13 +1,15 @@
-var $ = require("jquery");
-var React = require("react");
-var CommitListing = require("./CommitListing");
+import $ from "jquery";
+import React from "react";
+import CommitListing from "./CommitListing";
 
-var CommitList  = React.createClass({
-  getInitialState: function() {
-    return {data: []};
-  },
+class CommitList extends React.Component {
 
-  componentWillMount: function() {
+  constructor() {
+    super();
+    this.state = {data: []};
+  }
+
+  componentWillMount() {
     $.ajax({
       url: this.props.firebaseUrl,
       dataType: "json",
@@ -21,9 +23,9 @@ var CommitList  = React.createClass({
         console.log(err);
       }.bind(this)
     });
-  },
+  }
 
-  render: function() {
+  render() {
     console.log("building listings");
     var commitListings = [];
     var commitData = this.state.data;
@@ -54,6 +56,6 @@ var CommitList  = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = CommitList
+export default CommitList
