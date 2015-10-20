@@ -57,7 +57,6 @@ gulp.task('build', function(){
 });
 
 
-// not using for now
 gulp.task('replaceHTML', function(){
   gulp.src(path.HTML)
     .pipe(htmlreplace({
@@ -84,6 +83,6 @@ gulp.task('vendors', function () {
     return stream;
 });
 
-gulp.task('production', ['copy', 'vendors', 'build']);
+gulp.task('production', ['replaceHTML', 'vendors', 'build']);
 
 gulp.task('default', ['watch']);
