@@ -27,6 +27,7 @@ gulp.task('copy', function(){
     .pipe(gulp.dest(path.DEST));
 });
 
+// currently not used. Needs fixing, to include Babel, css, etc
 gulp.task('watch', function() {
   gulp.watch(path.HTML, ['copy']);
 

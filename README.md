@@ -1,2 +1,3 @@
-# react_git
-React.js front end for go_git
+# gitmine-front
+React.js front end for gitmine. 
+www.gitmine.org

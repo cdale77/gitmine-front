@@ -46,7 +46,6 @@ class CommitList extends React.Component {
 
     return (
       <div className="commit-list">
-        Here are the commits:
         {commitListings}
       </div>
     );
