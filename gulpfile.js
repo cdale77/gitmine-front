@@ -7,10 +7,14 @@ var watchify = require('watchify');
 var reactify = require('reactify');
 var streamify = require('gulp-streamify');
 var babelify = require('babelify');
+var cssmin = require('gulp-cssmin');
+var rename = require('gulp-rename');
 
 var path = {
+  CSS:  'src/css/*.css',
   HTML: 'src/index.html',
   MINIFIED_OUT: 'build.min.js',
+  MINIFIED_CSS: 'app.min.css',
   OUT: 'build.js',
   DEST: 'dist',
   DEST_BUILD: 'dist/build',
@@ -56,11 +60,18 @@ gulp.task('build', function(){
     .pipe(gulp.dest(path.DEST_BUILD));
 });
 
+gulp.task('css', function() {
+  gulp.src(path.CSS)
+      .pipe(cssmin())
+      .pipe(rename({suffix: ".min"}))
+      .pipe(gulp.dest(path.DEST_BUILD));
+});
 
 gulp.task('replaceHTML', function(){
   gulp.src(path.HTML)
     .pipe(htmlreplace({
-      'js': 'build/' + path.MINIFIED_OUT
+      'js': 'build/' + path.MINIFIED_OUT,
+      'css': 'build/' + path.MINIFIED_CSS
     }))
     .pipe(gulp.dest(path.DEST));
 });
@@ -83,6 +94,6 @@ gulp.task('vendors', function () {
     return stream;
 });
 
-gulp.task('production', ['replaceHTML', 'vendors', 'build']);
+gulp.task('production', ['replaceHTML', 'vendors', 'css', 'build']);
 
 gulp.task('default', ['watch']);
