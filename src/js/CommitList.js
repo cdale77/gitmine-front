@@ -1,3 +1,5 @@
+var $ = require("jquery");
+var React = require("react");
 var CommitListing = require("./CommitListing");
 
 var CommitList  = React.createClass({

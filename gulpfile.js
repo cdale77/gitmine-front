@@ -6,6 +6,7 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
 var streamify = require('gulp-streamify');
+var babelify = require('babelify');
 
 var path = {
   HTML: 'src/index.html',
@@ -47,13 +48,16 @@ gulp.task('build', function(){
   browserify({
     entries: [path.ENTRY_POINT],
     transform: [reactify],
-  })
+    })
+    .transform(babelify)
     .bundle()
     .pipe(source(path.MINIFIED_OUT))
     .pipe(streamify(uglify(path.MINIFIED_OUT)))
     .pipe(gulp.dest(path.DEST_BUILD));
 });
 
+
+// not using for now
 gulp.task('replaceHTML', function(){
   gulp.src(path.HTML)
     .pipe(htmlreplace({
@@ -62,6 +66,24 @@ gulp.task('replaceHTML', function(){
     .pipe(gulp.dest(path.DEST));
 });
 
-gulp.task('production', ['replaceHTML', 'build']);
+var vendors = [
+  'react',
+  'jquery'
+];
+
+gulp.task('vendors', function () {
+    var stream = browserify({
+            debug: false,
+            require: vendors
+        });
+
+    stream.bundle()
+          .pipe(source('vendors.js'))
+          .pipe(gulp.dest('dist/build'));
+
+    return stream;
+});
+
+gulp.task('production', ['copy', 'vendors', 'build']);
 
 gulp.task('default', ['watch']);

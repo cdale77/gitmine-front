@@ -1,3 +1,5 @@
+var React = require("react");
+
 var CommitListing = React.createClass({
   render: function() {
     return (

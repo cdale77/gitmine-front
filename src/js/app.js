@@ -1,3 +1,4 @@
+var React = require("react");
 var CommitList = require("./CommitList");
 
 React.render(
