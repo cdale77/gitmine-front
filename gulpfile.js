@@ -9,9 +9,11 @@ var streamify = require('gulp-streamify');
 var babelify = require('babelify');
 var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
+var sass = require('gulp-sass');
+var neat = require('node-neat').includePaths;
 
 var path = {
-  CSS:  'src/css/*.css',
+  SCSS:  'src/css/*.scss',
   HTML: 'src/index.html',
   MINIFIED_OUT: 'build.min.js',
   MINIFIED_CSS: 'app.min.css',
@@ -62,7 +64,10 @@ gulp.task('build', function(){
 });
 
 gulp.task('css', function() {
-  gulp.src(path.CSS)
+  gulp.src(path.SCSS)
+      .pipe(sass({
+        includePaths: ['styles'].concat(neat)
+      }).on("error", sass.logError))
       .pipe(cssmin())
       .pipe(rename({suffix: ".min"}))
       .pipe(gulp.dest(path.DEST_BUILD));
