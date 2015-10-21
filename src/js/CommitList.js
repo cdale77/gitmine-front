@@ -31,15 +31,14 @@ class CommitList extends React.Component {
         var commit = commitData[key];
         commitListings.push(
           <CommitListing
+            key = {key}
             data = {commit.Data}
             login = {commit.Login}
             avatar = {commit.Avatar}
             message = {commit.Message}
             url = {commit.Url} />
         );
-
       };
-
     };
 
     return (
