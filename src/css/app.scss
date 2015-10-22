@@ -21,14 +21,19 @@
   align-items: center;
 }
 
-.message { 
-  margin-left: 10%;
-}
-
 .avatar {
-  width: 7%;
+  order: 1;
+  flex: 1;
 }
 
 .date { 
-  margin-left: 10%;
+  order: 2;
+  flex: 1;
+  margin-left: 5%;
+}
+
+.message { 
+  order: 3;
+  flex: 5;
+  margin-left: 5%;
 }
