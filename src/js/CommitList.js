@@ -8,10 +8,11 @@ class CommitList extends React.Component {
     super();
     this.state = {data: []};
   }
+
   componentWillMount() {
     $.ajax({
       url: this.props.firebaseUrl,
-      data: { 'orderBy': '"Date"', 'limitToFirst': 100 },
+      data: { 'orderBy': '"Date"', 'limitToLast': 100 },
       type: "GET",
       dataType: "json",
       success: function(data) {
