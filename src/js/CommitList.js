@@ -24,6 +24,15 @@ class CommitList extends React.Component {
     });
   }
 
+  filterMessage(messageText) {
+    if (messageText.length > 155) {
+      return messageText.substr(0, 155) + " . . ."
+    } else {
+      return messageText
+    }
+
+  }
+
   render() {
     var commitListings = [];
     var commitData = this.state.data;
@@ -36,7 +45,7 @@ class CommitList extends React.Component {
             date = {commit.Date}
             login = {commit.Login}
             avatar = {commit.Avatar}
-            message = {commit.Message}
+            message = {this.filterMessage(commit.Message)}
             url = {commit.Url} />
         );
       };
