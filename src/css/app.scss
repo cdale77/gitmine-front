@@ -15,21 +15,20 @@
 }
 
 .commit-listing {
-  padding: .5% 1%;
+  padding: .5% 3%;
   border-bottom: $base-border;
+  display: flex;
+  align-items: center;
 }
 
 .message { 
   margin-left: 10%;
-  display: inline-block; 
 }
 
 .avatar {
-  display: inline-block;
   width: 7%;
 }
 
 .date { 
-  display: inline-block;
   margin-left: 10%;
 }

@@ -9,7 +9,7 @@ class CommitListing extends React.Component {
             <img src={this.props.avatar} />
           </a>
         </div>
-        <div className="date">{this.props.date}</div>
+        <div className="date">{this.props.date.split("T")[0]}</div>
         <div className="message">
           <a href={this.props.url}>{this.props.message}</a>
         </div>
