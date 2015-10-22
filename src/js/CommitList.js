@@ -32,7 +32,7 @@ class CommitList extends React.Component {
         commitListings.push(
           <CommitListing
             key = {key}
-            data = {commit.Data}
+            date = {commit.Date}
             login = {commit.Login}
             avatar = {commit.Avatar}
             message = {commit.Message}

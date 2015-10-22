@@ -1,8 +1,35 @@
 @import "bourbon";
+@import "base/base";
 @import "neat";
 
-#app {
-  width: 75%;
-  margin-left: auto;
-  margin-right: auto;
+#main { @include outer-container; }
+
+#site-title { 
+  font-size: 2em; 
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+#site-blurb {
+  text-align: center;
+}
+
+.commit-listing {
+  padding: .5% 1%;
+  border-bottom: $base-border;
+}
+
+.message { 
+  margin-left: 10%;
+  display: inline-block; 
+}
+
+.avatar {
+  display: inline-block;
+  width: 7%;
+}
+
+.date { 
+  display: inline-block;
+  margin-left: 10%;
 }

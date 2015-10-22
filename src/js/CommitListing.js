@@ -4,11 +4,15 @@ class CommitListing extends React.Component {
   render() {
     return (
       <div className="commit-listing">
-        <h3>Commit</h3>
-        Login: {this.props.login}<br />
-        Avatar: {this.props.avatar}<br />
-        Message: {this.props.message}<br />
-        Url: {this.props.url}
+        <div className="avatar">
+          <a href={"https://github.com/" + this.props.login}>
+            <img src={this.props.avatar} />
+          </a>
+        </div>
+        <div className="date">{this.props.date}</div>
+        <div className="message">
+          <a href={this.props.url}>{this.props.message}</a>
+        </div>
       </div>
     );
   }
