@@ -26,42 +26,12 @@ class CommitList extends React.Component {
   }
 
   sortCommits(commitData) {
-
-    let uniqDates = this.getUniqDates(commitData);
-
     let sortedCommits = [];
-    uniqDates.reverse().map(function(date) {
-
-      for(let key in commitData) {
-        let commit = commitData[key];
-        let commitDate = new Date(commit.Date);
-        commitDate.setHours(0,0,0,0);
-
-        if (date == commitDate) {
-          sortedCommits.push(commit);
-          delete commitData[key];
-        }
-      }
-    });
-
-    return sortedCommits;
-  }
-
-  getUniqDates(commitData) {
-    let dates = [];
-
-    for(let commit in commitData) {
-      dates.push(commitData[commit].Date);
+    for (let key in commitData) {
+      let commit = commitData[key];
+      sortedCommits.push(commit);
     }
-
-    //collapse and sort the date array
-    let simpleDates = dates.map(function(date) {
-      let parsedDate =  new Date(date);
-      parsedDate.setHours(0,0,0,0);
-      return(parsedDate.toString());
-    });
-
-    return [ ...new Set(simpleDates) ];
+   return sortedCommits.reverse();
   }
 
   filterMessage(messageText) {
